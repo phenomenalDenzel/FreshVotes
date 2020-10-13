@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: "Raleway", sans-serif;
+            background: #344a72;
+            color: #ffffff;
+            line-height: 1.8;
+        }
+        #container{
+            margin: 30px auto;
+            max-width: 400px;
+            padding: 20px;
+        }
+        .form-wrap{
+            background: #fff;
+            padding: 15px 25px;
+            color: #333;
+        }
+        .form-wrap h1{
+            text-align: center;
+        }
+        .form-wrap .form-group{
+            margin-top: 15px;
+        }
+        .form-wrap .form-group label{
+            display: block;
+            color: #666;
+        }
+        .form-wrap .form-group input{
+            width: 100%;
+            padding: 10px;
+            border: #ddd 1px solid;
+            border-radius: 5px;
+        }
+        .form-wrap button{
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #49c1a2;
+            color: #fff;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .form-wrap button:hover{
+            background: #37a08e;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="form-wrap">
+            <h1>Login In</h1>
+            <form action="" method="post">
+                <div th:if="${param.error != null}">
+                    Failed to Login
+                    <div th:if="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+                        Reason:<spam th:text="${SPRING_SECURITY_LAST_EXCEPTION.message}"></spam>
+                    </div>
+                </div>
+                <div th:if="${param.logout != null}">
+                    You have been logged out
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"/>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
