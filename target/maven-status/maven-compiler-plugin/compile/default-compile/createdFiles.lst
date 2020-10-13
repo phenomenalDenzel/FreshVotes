@@ -1,0 +1,4 @@
+com/freshvotes/model/Feature.class
+com/freshvotes/FreshVotesApplication.class
+com/freshvotes/ServletInitializer.class
+com/freshvotes/model/User.class

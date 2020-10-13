@@ -1,3 +1,9 @@
 
 # Default ignored files
 /workspace.xml
+/compiler.xml
+/encodings.xml
+/misc.xml
+/modules.xml
+/uiDesigner.xml
+fresh-votes/target/
