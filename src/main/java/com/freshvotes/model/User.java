@@ -1,10 +1,18 @@
 package com.freshvotes.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -15,6 +23,12 @@ public class User {
     private String username;
     private String password;
     private String name;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_has_authority",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "authority")})
+    private Set<Authority> authorities = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -46,5 +60,13 @@ public class User {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
     }
 }

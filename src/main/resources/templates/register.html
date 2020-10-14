@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <div id="container">
+        <div class="form-wrap">
+            <h1>Login In</h1>
+            <form action="" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" th:field="${user.name}"/>
+                </div>
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="text" id="username" name="username" th:field="${user.username}"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" th:field="${user.password}"/>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password"/>
+                </div>
+                <br/>
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
